@@ -35,6 +35,9 @@ set_encodings "utf-8"
 --add_requires("conan::asio/1.24.0", { alias = "asio" })
 add_requires("spdlog")
 add_requires("fmt", { configs = {header_only = true}})
+
+---Todo:这里用conan去安装gtest的话，workflow的文件就得去增加关于install conan的step了
+---add_requires("conan::gtest/1.14.0", { alias = "gtest" })
 add_requires("gtest")
 
 

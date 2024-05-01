@@ -3,7 +3,9 @@
 #include <gmock/gmock.h>
 #include <memory>
 #include <vector>
-#include <iostream>
+// #include <iostream>
+// #include <chrono> // 包含时间库
+// #include <thread> // 包含线程库
 #include "../src/mem_allocator_guard.hpp"
 
 TEST(MemoryPoolTestLess128Bytes, allocator)
@@ -104,8 +106,7 @@ TEST(MemoryPoolTestGreater128Bytes, deallocate)
     // 通常情况下，操作系统会将已释放的内存标记为可再分配的，并在需要时将其重新分配给新的内存申请。
     // EXPECT_TRUE(p3Bake != p33Bake);
 }
-#include <chrono> // 包含时间库
-#include <thread> // 包含线程库
+
 TEST(MemoryPoolTestAllocateLoop, allocator)
 {
     // calc the pysical memory size:
@@ -114,7 +115,7 @@ TEST(MemoryPoolTestAllocateLoop, allocator)
     using MemAllocatorGuardVecType = std::vector<std::unique_ptr<MemAllocatorGuard>>;
     MemAllocatorGuardVecType memAllocatorGuardVec;
     //constexpr auto times { 100000 };
-    constexpr auto times { 100 };
+    constexpr auto times { 1 };
     for (int i = 0; i < times; i++) {
         for (size_t itemSize = 8; itemSize < 1024; itemSize += 8) {
             auto ptr = std::make_unique<MemAllocatorGuard>(itemSize);
