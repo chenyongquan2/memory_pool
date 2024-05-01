@@ -62,14 +62,14 @@ jobs:
       #       $targetName = (Select-String -Path xmake.lua -Pattern 'target\("(.+)"\)' | ForEach-Object { $_.Matches.Groups[1].Value })
       #       echo "$targetName" >> $GITHUB_ENV
         
-      # - name: Rename exe file
-      #   run: mv "build/windows/${{ matrix.arch }}/release/${{ env.target_name }}.exe" "build/windows/${{ matrix.arch }}/release/${{ env.target_name }}_${{ matrix.arch }}.exe"
+      - name: Rename exe file
+        run: mv "build/windows/${{ matrix.arch }}/release/memory_pool.exe" "build/windows/${{ matrix.arch }}/release/memory_pool_${{ matrix.arch }}.exe"
       
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
           name: exe-file-${{ matrix.arch }}
-          path: build/windows/${{ matrix.arch }}/release/memory_pool.exe
+          path: build/windows/${{ matrix.arch }}/release/memory_pool_${{ matrix.arch }}.exe
 
   release:
       needs: build
