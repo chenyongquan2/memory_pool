@@ -92,6 +92,7 @@ jobs:
             git fetch --tags
             if git rev-parse ${{ steps.extract_version.outputs.version }} >/dev/null 2>&1; then
               echo "Tag already exists"
+              echo "tag name=${{ steps.extract_version.outputs.version }}"
             else
               echo "Tag does not exist. Continuing to next step."
               echo "::set-output name=tag_exists::false"
