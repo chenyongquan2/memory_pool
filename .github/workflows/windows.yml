@@ -109,7 +109,7 @@ jobs:
         - name: Generate Changelog
           id: generate_changelog
           run: |
-            PREVIOUS_TAG=$(git describe --tags --abbrev=0 --match "*.*.*" $(git rev-list --tags --skip=1 --max-count=1))
+            PREVIOUS_TAG=$(git describe --tags --abbrev=0 --match "*.*.*" --always $(git rev-list --tags --skip=1 --max-count=1))
             echo "PREVIOUS_TAG=$PREVIOUS_TAG" >> $GITHUB_ENV
             git log --no-merges --pretty="%h - %s (%an)<br />" $PREVIOUS_TAG..$VERSION > CHANGELOG.md
           
