@@ -59,12 +59,12 @@ jobs:
       - name: Get target name
         id: get_target_name
         run: |
-          $targetName = (Select-String -Path xmake.lua -Pattern 'target\("(.+)"\)' | ForEach-Object { $_.Matches.Groups[1].Value })
-          echo "::set-output name=target_name::$targetName"
-
+            $targetName = (Select-String -Path xmake.lua -Pattern 'target\("(.+)"\)' | ForEach-Object { $_.Matches.Groups[1].Value })
+            echo "$targetName" >> $GITHUB_ENV
+        
       - name: Rename exe file
-        run: mv "build/windows/${{ matrix.arch }}/release/${{ steps.get_target_name.outputs.target_name }}.exe" "build/windows/${{ matrix.arch }}/release/${{ steps.get_target_name.outputs.target_name }}_${{ matrix.arch }}.exe"
-
+        run: mv "build/windows/${{ matrix.arch }}/release/${{ env.target_name }}.exe" "build/windows/${{ matrix.arch }}/release/${{ env.target_name }}_${{ matrix.arch }}.exe"
+      
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:

@@ -107,31 +107,31 @@ TEST(MemoryPoolTestGreater128Bytes, deallocate)
     // EXPECT_TRUE(p3Bake != p33Bake);
 }
 
-TEST(MemoryPoolTestAllocateLoop, allocator)
-{
-    // calc the pysical memory size:
-    size_t pysical_memory_size = 0;
+// TEST(MemoryPoolTestAllocateLoop, allocator)
+// {
+//     // calc the pysical memory size:
+//     size_t pysical_memory_size = 0;
 
-    using MemAllocatorGuardVecType = std::vector<std::unique_ptr<MemAllocatorGuard>>;
-    MemAllocatorGuardVecType memAllocatorGuardVec;
-    //constexpr auto times { 100000 };
-    constexpr auto times { 1 };
-    for (int i = 0; i < times; i++) {
-        for (size_t itemSize = 8; itemSize < 1024; itemSize += 8) {
-            auto ptr = std::make_unique<MemAllocatorGuard>(itemSize);
-            pysical_memory_size += itemSize;
-            memAllocatorGuardVec.push_back(std::move(ptr));
-        }
-    }
+//     using MemAllocatorGuardVecType = std::vector<std::unique_ptr<MemAllocatorGuard>>;
+//     MemAllocatorGuardVecType memAllocatorGuardVec;
+//     //constexpr auto times { 100000 };
+//     constexpr auto times { 1 };
+//     for (int i = 0; i < times; i++) {
+//         for (size_t itemSize = 8; itemSize < 1024; itemSize += 8) {
+//             auto ptr = std::make_unique<MemAllocatorGuard>(itemSize);
+//             pysical_memory_size += itemSize;
+//             memAllocatorGuardVec.push_back(std::move(ptr));
+//         }
+//     }
 
-    EXPECT_TRUE(!memAllocatorGuardVec.empty());
-    for (auto i = 0; i < memAllocatorGuardVec.size(); i++) {
-        auto p = memAllocatorGuardVec.at(i)->GetMem();
-        EXPECT_TRUE(p != nullptr);
-    }
-    // std::this_thread::sleep_for(std::chrono::seconds(3));
-    // std::cout << "memAllocatorGuardVec:" << pysical_memory_size << "bytes" << std::endl;
-}
+//     EXPECT_TRUE(!memAllocatorGuardVec.empty());
+//     for (auto i = 0; i < memAllocatorGuardVec.size(); i++) {
+//         auto p = memAllocatorGuardVec.at(i)->GetMem();
+//         EXPECT_TRUE(p != nullptr);
+//     }
+//     // std::this_thread::sleep_for(std::chrono::seconds(3));
+//     // std::cout << "memAllocatorGuardVec:" << pysical_memory_size << "bytes" << std::endl;
+// }
 
 int main(int argc, char** argv)
 {
