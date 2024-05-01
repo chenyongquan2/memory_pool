@@ -35,7 +35,7 @@ set_encodings "utf-8"
 --add_requires("conan::asio/1.24.0", { alias = "asio" })
 add_requires("spdlog")
 add_requires("fmt", { configs = {header_only = true}})
-add_requires("conan::gtest/1.14.0", { alias = "gtest" })
+add_requires("gtest")
 
 
 add_cxxflags ("cl::/Zc:__cplusplus")
