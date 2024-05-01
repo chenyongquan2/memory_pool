@@ -35,6 +35,7 @@ set_encodings "utf-8"
 --add_requires("conan::asio/1.24.0", { alias = "asio" })
 add_requires("spdlog")
 add_requires("fmt", { configs = {header_only = true}})
+add_requires("conan::gtest/1.14.0", { alias = "gtest" })
 
 
 add_cxxflags ("cl::/Zc:__cplusplus")
@@ -63,3 +64,11 @@ add_files("src/*.cpp")
 -- target("server")
 -- 	add_files("src/*.cpp")
 -- 	remove_files( "src/clientmain.cpp")
+
+--单元测试
+add_tests("unittest", {
+    remove_files = "src/main.cpp",
+    packages = {"gtest"},
+    files = { "test/*.cpp"},
+    defines = "UNITTEST"
+})

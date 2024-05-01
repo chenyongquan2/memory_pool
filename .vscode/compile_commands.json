@@ -1,2 +1,6 @@
 [
-]
+{
+  "directory": "c:\\workspace\\memory_pool",
+  "arguments": ["C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/Zi", "/FS", "/Fdbuild\\windows\\x64\\debug\\compile.memory_pool.pdb", "/Od", "/std:c++20", "/MDd", "/DFMT_HEADER_ONLY=1", "/EHsc", "/utf-8", "/IC:\\Users\\cyq\\AppData\\Local\\.xmake\\packages\\s\\spdlog\\v1.13.0\\9f0b6d472e6547e5980f5feb649ad5fa\\include", "/IC:\\Users\\cyq\\AppData\\Local\\.xmake\\packages\\f\\fmt\\10.2.1\\d7b36bc6776147ae9d6dc6302f2b8d47\\include", "/Zc:__cplusplus", "/w", "/bigobj", "/Fobuild\\.objs\\memory_pool\\windows\\x64\\debug\\src\\main.cpp.obj", "src\\main.cpp", "-imsvc", "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\cppwinrt", "-imsvc", "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\shared", "-imsvc", "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt", "-imsvc", "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\um", "-imsvc", "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\winrt", "-imsvc", "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\include"],
+  "file": "src\\main.cpp"
+}]

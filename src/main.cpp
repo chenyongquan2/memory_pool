@@ -1,23 +1,10 @@
 #include "memory_pool.hpp"
+#include "mem_allocator_guard.hpp"
 #include <cassert>
 #include <cstddef>
 #include <iostream>
 
 using namespace std;
-
-struct MemAllocatorGuard {
-public:
-    MemAllocatorGuard(size_t size) noexcept
-        : size_(size)
-        , pMem_(memory_pool<8, 128>::allocate<true>(size))
-    {
-    }
-    ~MemAllocatorGuard() noexcept { memory_pool<8, 128>::deallocate(pMem_, size_); }
-    void* GetMem() const { return pMem_; }
-
-    void* pMem_;
-    size_t size_;
-};
 
 int main()
 {
