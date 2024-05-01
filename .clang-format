@@ -1,0 +1,4 @@
+BasedOnStyle: webkit
+ColumnLimit:     120
+SortIncludes: false
+AlwaysBreakTemplateDeclarations: Yes
